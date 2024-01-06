@@ -16,8 +16,11 @@ jobs:
           aws-region: ap-southeast-2
       # sam build 
       - run: sam build --use-container
+        working-directory: solana-meme-monster
+        
 
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name solana-meme-monster --s3-bucket roryglee-meme-monster --capabilities CAPABILITY_IAM --region ap-southeast-2
+        working-directory: solana-meme-monster
