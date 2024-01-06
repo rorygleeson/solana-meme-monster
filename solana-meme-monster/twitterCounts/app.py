@@ -31,7 +31,7 @@ def get_tweet():
     """Creates our tweet."""
 
   
-    tweet = "Tomorrow is New Year's Day!"
+    tweet = "WTF5673"
     return tweet
 
 
@@ -67,10 +67,23 @@ def lambda_handler(event, context):
 
     #     raise e
 
+
+    keys = get_twitter_keys()
+
+    client = tweepy.Client(
+        consumer_key=keys.get('twitter_api_key'),
+        consumer_secret=keys.get('twitter_api_secret'),
+        access_token=keys.get('twitter_access_token'),
+        access_token_secret=keys.get('twitter_access_secret')
+    )
+
+    tweet = get_tweet()
+    client.create_tweet(text=tweet)
+
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "message": "BONK token mentions in last hour = 34219",
+            "message": "Tweet Sent? BONK token mentions in last hour = 34219",
             # "location": ip.text.replace("\n", "")
         }),
     }
