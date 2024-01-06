@@ -8,7 +8,7 @@ API will return social media counts (mentions, retweets, followers etc.) related
 Utilises AWS infrastructure and SAM (serverless application model)
 
 
-Designed for use by degen meme token traders !!!
+Designed for use by degen meme token traders !!!!
  
 
 
