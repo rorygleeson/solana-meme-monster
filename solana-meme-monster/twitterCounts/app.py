@@ -36,7 +36,7 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "message": "BONK token mentions in last hour = 34521",
+            "message": "BONK token mentions in last hour = 3421",
             # "location": ip.text.replace("\n", "")
         }),
     }
