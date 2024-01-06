@@ -1,6 +1,6 @@
 import json
 # import requests
-
+import tweepy
 
 def lambda_handler(event, context):
     """Sample pure Lambda function
