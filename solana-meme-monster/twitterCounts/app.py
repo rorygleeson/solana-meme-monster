@@ -1,6 +1,40 @@
 import json
-
+import tweepy
 # import requests
+
+def get_twitter_keys():
+    """Retrieve secrets from Parameter Store."""
+    # Create our SSM Client.
+    aws_client = boto3.client('ssm')
+
+    # Get our keys from Parameter Store.
+    parameters = aws_client.get_parameters(
+        Names=[
+            'twitter_api_key',
+            'twitter_api_secret',
+            'twitter_access_token',
+            'twitter_access_secret'
+        ],
+        WithDecryption=True
+    )
+
+    # Convert list of parameters into simpler dict.
+    keys = {}
+    for parameter in parameters['Parameters']:
+        keys[parameter['Name']] = parameter['Value']
+
+    return keys
+
+
+
+def get_tweet():
+    """Creates our tweet."""
+
+  
+    tweet = "Tomorrow is New Year's Day!"
+    return tweet
+
+
 
 
 def lambda_handler(event, context):
