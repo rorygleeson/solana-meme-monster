@@ -50,7 +50,7 @@ Outputs:
   GetCountsApi:
     Description: API Gateway endpoint URL for Prod stage for twitterCounts function
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getCounts/"
-  HelloWorldFunction:
+  TwitterCountsFunction:
     Description: Get Twitter Counts Lambda Function ARN
     Value: !GetAtt TwitterCountsFunction.Arn
   TwitterCountsFunctionIamRole:
