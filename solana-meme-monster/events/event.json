@@ -1,5 +1,5 @@
 {
-  "body": "{\"message\": \"get twitter counts\"}",
+  "body": "{\"message\": \"get token counts\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "POST",

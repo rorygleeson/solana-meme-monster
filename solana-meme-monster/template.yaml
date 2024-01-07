@@ -15,13 +15,13 @@ Globals:
   Api:
     TracingEnabled: true
 Resources:
-  TwitterCountsFunction:
+  TokenCountsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       Policies:
-      # Give the Lambda service access to poll your DynamoDB Stream
+      # Give the Lambda service access to poll your SSM service
       - AmazonSSMReadOnlyAccess
-      CodeUri: twitterCounts/
+      CodeUri: tokenCounts/
       Handler: app.lambda_handler
       Runtime: python3.10
       Architectures:
@@ -30,7 +30,7 @@ Resources:
         GetTwitterCounts:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /getCounts
+            Path: /getTokenCounts
             Method: get
 
   ApplicationResourceGroup:
@@ -51,11 +51,11 @@ Outputs:
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   GetCountsApi:
-    Description: API Gateway endpoint URL for Prod stage for twitterCounts function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getCounts/"
+    Description: API Gateway endpoint URL for Prod stage for tokenCounts function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getTokenCounts/"
   TwitterCountsFunction:
-    Description: Get Twitter Counts Lambda Function ARN
-    Value: !GetAtt TwitterCountsFunction.Arn
+    Description: Get TokenCounts Lambda Function ARN
+    Value: !GetAtt TokenCountsFunction.Arn
   TwitterCountsFunctionIamRole:
-    Description: Implicit IAM Role created for twitterCounts function
-    Value: !GetAtt TwitterCountsFunctionRole.Arn
+    Description: Implicit IAM Role created for tokenCounts function
+    Value: !GetAtt TokenCountsFunctionRole.Arn

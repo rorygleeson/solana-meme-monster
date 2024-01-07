@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from twitterCounts import app
+from tokenCounts import app
 
 
 @pytest.fixture()
@@ -69,4 +69,4 @@ def test_lambda_handler(apigw_event):
 
     assert ret["statusCode"] == 200
     assert "message" in ret["body"]
-    assert data["message"] == "get Twitter counts"
+    assert data["message"] == "get Token counts"
