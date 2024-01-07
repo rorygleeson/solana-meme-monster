@@ -6,7 +6,7 @@ import boto3
 
 def get_twitter_keys():
     """Retrieve secrets from Parameter Store."""
-    print("Get Keys")
+    print("Get Keys from param store")
     # Create our SSM Client.
     aws_client = boto3.client('ssm')
 
