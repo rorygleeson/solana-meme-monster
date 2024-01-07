@@ -20,7 +20,7 @@ Resources:
     Properties:
       CodeUri: twitterCounts/
       Handler: app.lambda_handler
-      Runtime: python3.8
+      Runtime: python3.10
       Architectures:
       - x86_64
       Events:
