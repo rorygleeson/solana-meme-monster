@@ -32,23 +32,6 @@ Resources:
           Properties:
             Path: /getTokenCounts
             Method: get
-  
-  
-  CrawlerFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: crawler/
-      Handler: app.lambda_handler
-      Runtime: python3.10
-      Architectures:
-      - x86_64
-
-
-
-
-
-
-
 
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group
@@ -70,15 +53,9 @@ Outputs:
   GetCountsApi:
     Description: API Gateway endpoint URL for Prod stage for tokenCounts function
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getTokenCounts/"
-  TokenCountsFunction:
+  TwitterCountsFunction:
     Description: Get TokenCounts Lambda Function ARN
     Value: !GetAtt TokenCountsFunction.Arn
-  TokenCountsFunctionIamRole:
+  TwitterCountsFunctionIamRole:
     Description: Implicit IAM Role created for tokenCounts function
     Value: !GetAtt TokenCountsFunctionRole.Arn
-  CrawlerFunction:
-    Description: Get CrawlerFunction Lambda Function ARN
-    Value: !GetAtt CrawlerFunction.Arn
-  CrawlerFunctionIamRole:
-    Description: Implicit IAM Role created for crawler function
-    Value: !GetAtt CrawlerFunctionRole.Arn
