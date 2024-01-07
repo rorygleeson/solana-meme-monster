@@ -1,5 +1,5 @@
 import json
-import requests
+# import requests
 import tweepy
 import boto3
 
