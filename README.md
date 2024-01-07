@@ -1,6 +1,6 @@
 # solana-meme-monster
 
-WIP
+WIP........
 
 API will return social media counts (mentions, retweets, followers etc.) related to a $TOKEN (meme token for example $BONK) on the Solana blockchain. 
 
