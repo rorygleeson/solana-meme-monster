@@ -31,7 +31,7 @@ def get_twitter_keys():
 
 def get_tweet():
     """Creates our tweet."""
-    tweet = "WTF5673"
+    tweet = "WTF56731"
     return tweet
 
 
