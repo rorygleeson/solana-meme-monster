@@ -6,17 +6,22 @@ import boto3
 
 def get_twitter_keys():
     """Retrieve secrets from Parameter Store."""
+    print("Get Keys")
     # Create our SSM Client.
     aws_client = boto3.client('ssm')
 
     # Get our keys from Parameter Store.
     parameters = aws_client.get_parameters(
         Names=[
+            'twitter_api_key',
+            'twitter_api_secret',
+            'twitter_access_token',
+            'twitter_access_secret',
             'twitter_bearer_code'
         ],
         WithDecryption=True
     )
-
+    
     # Convert list of parameters into simpler dict.
     keys = {}
     for parameter in parameters['Parameters']:
@@ -30,7 +35,7 @@ def lambda_handler(event, context):
 
 
     keys = get_twitter_keys()
-
+    print("Search Twitter")
     client = tweepy.Client(
         bearer_token=keys.get('twitter_bearer_code')
     )
