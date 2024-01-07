@@ -18,6 +18,9 @@ Resources:
   TwitterCountsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
+      Policies:
+      # Give the Lambda service access to poll your DynamoDB Stream
+      - AmazonSSMReadOnlyAccess
       CodeUri: twitterCounts/
       Handler: app.lambda_handler
       Runtime: python3.10
