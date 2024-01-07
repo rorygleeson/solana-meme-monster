@@ -18,9 +18,6 @@ Resources:
   TokenCountsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      Policies:
-      # Give the Lambda service access to poll your SSM service
-      - AmazonSSMReadOnlyAccess
       CodeUri: tokenCounts/
       Handler: app.lambda_handler
       Runtime: python3.10
@@ -37,17 +34,14 @@ Resources:
   CrawlerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
+      Policies:
+      # Give the Lambda service access to poll your SSM service
+      - AmazonSSMReadOnlyAccess
       CodeUri: crawler/
       Handler: app.lambda_handler
       Runtime: python3.10
       Architectures:
       - x86_64
-
-
-
-
-
-
 
 
   ApplicationResourceGroup:
