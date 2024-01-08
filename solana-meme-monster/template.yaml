@@ -43,11 +43,7 @@ Resources:
               Ref: ApiGatewayEndpoint
             Path: /getTokenCounts
             Method: get
-            Auth:
-              ApiKeyRequired: true
-              UsagePlan:
-                CreateUsagePlan: PER_API
-                UsagePlanName: MemeMonsterUsagePlan
+            
                 
                 
   CrawlerFunction:
