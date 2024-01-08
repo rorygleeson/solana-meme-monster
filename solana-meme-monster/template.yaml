@@ -81,7 +81,4 @@ Outputs:
   CrawlerFunctionIamRole:
     Description: Implicit IAM Role created for crawler function
     Value: !GetAtt CrawlerFunctionRole.Arn
-  ApiKey:
-    Description: You can find your api key here
-    Value: !Sub "${ServerlessRestApiApiKey}"
     
