@@ -33,12 +33,76 @@ def lambda_handler(event, context):
     #     raise e
     
 
- 
+    # python object(dictionary) to be dumped 
+    tokenCount ={ 
+        "$BONK": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        }, 
+        "$DOGWIFHAT": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        },
+        "$ANALOS": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        }, 
+        "$SILLYDRAGON": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        },
+        "$SoBIT": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        }, 
+        "$LessFnGas": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        },
+        "$USEDCAR": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        }, 
+        "$POPCAT": { 
+            "twitter": "3211", 
+            "tiktok": "213", 
+            "youtube": "23",
+            "reddit" : "154",
+            "discord" : "233",
+            "instagram": "34"
+        },
+    } 
 
     return {
         "statusCode": 200,
-        "body": json.dumps({
-            "twitterMentions": "34219y",
-            # "location": ip.text.replace("\n", "")
-        }),
+        "body": json.dumps(tokenCount)
     }
+    
