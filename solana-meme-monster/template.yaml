@@ -10,11 +10,23 @@ Globals:
   Function:
     Timeout: 3
     MemorySize: 128
-
     Tracing: Active
   Api:
     TracingEnabled: true
+
 Resources:
+
+   # Build the API Gateway and setup an API Key
+  ApiGatewayEndpoint:
+    Type: 'AWS::Serverless::Api'
+    Properties:
+      StageName: Prod
+      Auth:
+        ApiKeyRequired: true
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          UsagePlanName: MemeMonsterAPIUsagePlan
+  
   TokenCountsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -27,6 +39,8 @@ Resources:
         GetTwitterCounts:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
+            RestApiId:
+              Ref: ApiGatewayEndpoint
             Path: /getTokenCounts
             Method: get
             Auth:
