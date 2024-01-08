@@ -29,6 +29,9 @@ Resources:
           Properties:
             Path: /getTokenCounts
             Method: get
+            Auth:
+              ApiKeyRequired: true
+          
   
   
   CrawlerFunction:
