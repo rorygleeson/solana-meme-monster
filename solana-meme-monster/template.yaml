@@ -83,5 +83,5 @@ Outputs:
     Value: !GetAtt CrawlerFunctionRole.Arn
   ApiKey:
     Description: You can find your api key here
-    Value: !Sub "https://console.aws.amazon.com/apigateway/home?region=${AWS::REGION}#/api-keys/${ApiGatewayEndPointApiKey}"
+    Value: !Sub "${ServerlessRestApiApiKey}"
     
