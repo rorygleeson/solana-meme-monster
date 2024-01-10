@@ -1,1 +1,70 @@
+import asyncio
+import time
+from twscrape import API, gather
+from twscrape.logger import set_log_level
 
+async def main():
+    api = API()  # or API("path-to.db") - default is `accounts.db`
+    count = 0
+    # ADD ACCOUNTS (for CLI usage see BELOW)
+    # await api.pool.add_account("xxxxx", "xxxxx", "xxxx@xxx.xxx", "xxxxxx")
+    await api.pool.login_all()
+
+    # Get time of last search so we can only search for tweets after that time
+    f = open('TweetID', 'r')
+    tweetID = f.read()
+    print("Tweet ID from disk")
+    print(tweetID)
+    f.close()
+    print("========================")
+
+    search_string = "$SOL lang:en since_id:"
+    search_string += tweetID
+    print("search string for the twitter search is")
+    print(search_string)
+    print("========================")
+    # API USAGE
+
+    # search (latest tab)
+    # await gather(api.search("elon musk", limit=20))  # list[Tweet]
+   
+
+    # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
+    async for tweet in api.search(search_string, limit=5):
+        print("count is")
+        print(count)
+        print(tweet.id, tweet.user.username)  # tweet is `Tweet` object
+        if count==0:                            # only get here IF tweet found and the first one
+            print("count is 0")
+            tweetIDtoStore=tweet.id
+            print("saved count 0 value is")
+            print(tweetIDtoStore)
+        count+=1
+
+
+    
+    # change log level, default info
+    set_log_level("DEBUG")
+    #Now store back unix seconds
+    print("------------------------")
+    print("Total Tweet counts")
+    print(count)
+    print("------------------------")
+    # if count = 0, do not store TweetID back, only store if count > 0
+
+    if count>0:
+        print("ID of latest tweet to store back")
+        print(tweetIDtoStore)
+        print("now store back the following tweetID")
+        print(tweetIDtoStore)
+        #tweetIDtoStoreStr=str(tweetIDtoStore)
+        filehandle = open('TweetID', 'w')
+        filehandle.write(str(tweetIDtoStore))
+        filehandle.close()
+    else:
+        print("no new tweets so no tweetID to save to disk")
+        
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
