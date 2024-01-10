@@ -26,7 +26,7 @@ async def main():
     # API USAGE
 
     # search (latest tab)
-    # await gather(api.search("elon musk", limit=20))  # list[Tweet]
+    # await gather(api.search("$SOL", limit=20))  # list[Tweet]
    
 
     # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
