@@ -3,11 +3,10 @@ import time
 from twscrape import API, gather
 from twscrape.logger import set_log_level
 
+
 async def main():
     api = API()  # or API("path-to.db") - default is `accounts.db`
     count = 0
-    # ADD ACCOUNTS (for CLI usage see BELOW)
-    # await api.pool.add_account("xxxxx", "xxxxx", "xxxxx", "xxxxx")
     await api.pool.login_all()
 
     # Get time of last search so we can only search for tweets after that time
