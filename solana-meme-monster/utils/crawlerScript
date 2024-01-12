@@ -7,7 +7,7 @@ async def main():
     api = API()  # or API("path-to.db") - default is `accounts.db`
     count = 0
     # ADD ACCOUNTS (for CLI usage see BELOW)
-    # await api.pool.add_account("xxxxx", "xxxxx", "xxxx@xxx.xxx", "xxxxxx")
+    # await api.pool.add_account("xxxxx", "xxxxx", "xxxxx", "xxxxx")
     await api.pool.login_all()
 
     # Get time of last search so we can only search for tweets after that time
@@ -30,18 +30,18 @@ async def main():
    
 
     # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
-    async for tweet in api.search(search_string, limit=5):
-        print("count is")
-        print(count)
-        print(tweet.id, tweet.user.username)  # tweet is `Tweet` object
+    async for tweet in api.search(search_string, limit=10):
         if count==0:                            # only get here IF tweet found and the first one
-            print("count is 0")
+            print("Tweets were found")
             tweetIDtoStore=tweet.id
-            print("saved count 0 value is")
+            print("Tweet ID to store back to disk")
             print(tweetIDtoStore)
         count+=1
-
-
+        print("Tweet Count is")
+        print(count)
+        print(tweet.id, tweet.user.username)  # tweet is `Tweet` object
+        print("Time of tweet")
+        print(tweet.date)
     
     # change log level, default info
     set_log_level("DEBUG")
