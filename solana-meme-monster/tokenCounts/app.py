@@ -36,7 +36,7 @@ def lambda_handler(event, context):
     # python object(dictionary) to be dumped 
     tokenCount ={ 
         "$BONK": { 
-            "twitter": "3211", 
+            "twitter": "9999", 
             "tiktok": "213", 
             "youtube": "23",
             "reddit" : "154",
